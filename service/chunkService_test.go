@@ -7,8 +7,6 @@ import (
 	"goapi/model"
 )
 
-const testChunkSize = 5
-
 func TestChunkNumbers(t *testing.T) {
 
 	tests := []struct {
@@ -26,18 +24,18 @@ func TestChunkNumbers(t *testing.T) {
 			},
 		},
 		{
-			number: 10,
+			number: 200,
 			expected: []model.Chunk{
-				{Start: 1, End: 5},
-				{Start: 6, End: 10},
+				{Start: 1, End: 100},
+				{Start: 101, End: 200},
 			},
 		},
 		{
-			number: 12,
+			number: 209,
 			expected: []model.Chunk{
-				{Start: 1, End: 5},
-				{Start: 6, End: 10},
-				{Start: 11, End: 12},
+				{Start: 1, End: 100},
+				{Start: 101, End: 200},
+				{Start: 201, End: 209},
 			},
 		},
 	}
