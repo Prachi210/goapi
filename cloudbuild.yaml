@@ -1,0 +1,23 @@
+steps:
+  - name: 'gcr.io/cloud-builders/go'
+    entrypoint: 'go'
+    args: ['build', '-o', 'main']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/goapi-467510/goapi', '.']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/goapi-467510/goapi']
+
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      [
+        'run', 'deploy', 'goapi-service',
+        '--image', 'gcr.io/goapi-467510/goapi',
+        '--region', 'us-central1',
+        '--platform', 'managed',
+        '--allow-unauthenticated'
+      ]
+
+images:
+  - 'gcr.io/goapi-467510/goapi'
