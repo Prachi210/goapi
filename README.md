@@ -1,6 +1,6 @@
 # Go Gin Chunk API
 
-This project is a simple API built with Gin in Go that takes a number input, divides it into multiple chunks, and processes those chunks concurrently using goroutines.
+This project is a simple API built with Gin in Go that takes a number input, divides it into multiple chunks, and processes those chunks concurrently using goroutines & gives summation.
 
 ## Project Structure
 
